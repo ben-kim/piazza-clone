@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Piazza Lite</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/socket.min.js"></script>
+    <script src="client.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12 title">
+          <h1>Piazza-Lite</h1>
+          <button class="btn btn-primary" id="add-question" data-toggle="modal" data-target="#questionModal">Add a question</button>
+
+         <div class="modal fade" id="questionModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Create a new Piazza Question</h4>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="question-text" class="control-label">Text:</label>
+                    <textarea class="form-control" id="question-text"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" id="closeModal" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="submitQuestion" class="btn btn-primary" data-dismiss="modal">Submit Question</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 question-pane">
+          <ul class="question-list">
+          </ul>
+        </div>
+        <div class="col-md-7 answers-pane">
+          <div class="row question-view">
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
