@@ -1,6 +1,6 @@
 {
-  "name": "hw5",
-  "version": "1.0.0",
+  "name": "piazza-clone",
+  "version": "0.1.1",
   "description": "CIS 197 socket.io homework",
   "main": "server/index.js",
   "scripts": {
@@ -9,14 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cis197/HW-sockets.git"
+    "url": "git+https://github.com/ben-kim/piazza-clone.git"
   },
-  "author": "CIS 197 Staff",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cis197/HW-sockets/issues"
-  },
-  "homepage": "https://github.com/cis197/HW-sockets#readme",
+  "author": "Ben Kim",
   "dependencies": {
     "chai": "^3.5.0",
     "grunt": "^0.4.5",

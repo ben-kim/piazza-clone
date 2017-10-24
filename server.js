@@ -1,7 +1,3 @@
-// The below code creates a simple HTTP server with the NodeJS `http` module,
-// and makes it able to handle websockets. However, currently it does not
-// actually have any websocket functionality - that part is your job!
-
 var http = require('http');
 var io = require('socket.io');
 
@@ -18,16 +14,16 @@ server.listen(8080, function () {
 
 var socketServer = io(server);
 
-// This is the object that will keep track of all the current questions in the server.
-// It can be considered to be the (in-memory) database of the application.
+// application data stored on the central server 
+// TODO: move to full-scale database
 var questions = {};
 var nextId = Object.keys(questions).length;
 
-// Your code goes here:
-
 socketServer.on('connection', function (socket) {
+  // when connected, show current questions to client
   socket.emit('here_are_the_current_questions', questions);
 
+  // update questions object
   socket.on('add_new_question', function (question) {
     questions[nextId] = {
       text: question.text,
@@ -39,6 +35,7 @@ socketServer.on('connection', function (socket) {
     nextId++;
   });
 
+  // return question associated with given id
   socket.on('get_question_info', function (id) {
     if (typeof questions[id] === 'undefined') {
       socket.emit('question_info', null);
@@ -47,6 +44,7 @@ socketServer.on('connection', function (socket) {
     }
   });
 
+  // broadcast update answer to all other clients
   socket.on('add_answer', function (update) {
     questions[update.id].answer = update.answer;
     socket.broadcast.emit('answer_added', questions[update.id]);
